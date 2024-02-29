@@ -75,7 +75,33 @@ table {
 ul {  
   padding-top: 100px;
   list-style: none;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
 }
+.alien {
+  height: fit-content;
+  width: 15em;;
+
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  margin: 2% auto;
+  padding: 2%;
+}
+.alien *{
+  margin: auto 2%;
+}
+.alien img{
+  width: 95%;
+}
+.alien strong{
+  font-size: large;
+}
+
 
 
 

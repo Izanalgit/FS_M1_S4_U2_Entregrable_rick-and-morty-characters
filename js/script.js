@@ -6,7 +6,8 @@ const charList = document.getElementById("character-list");
 
 const citadel = "https://rickandmortyapi.com/api/character/?page=";
 
-let pages = 1; 
+let pages = 1;
+const minpages = 1; 
 const maxpages = 42;
 //no he sabido sacar del fetch una variable de paginas, asi que la declaro
 
@@ -16,11 +17,12 @@ RickCallback(pages);
 
 nextBut.addEventListener('click', () => {
     pages++;
-    if (pages === maxpages){pages = 1;}
+    if (pages > maxpages){pages = maxpages;}
     RickCallback(pages);
 });
 prevBut.addEventListener('click', () => {
     pages--;
+    if (pages < minpages){pages = minpages;}
     RickCallback(pages);
 });
 
@@ -40,10 +42,10 @@ function RickCallback (page){
         response.results.forEach((alien) => {
         let addAlien = document.createElement("li");
         addAlien.innerHTML=(
-            '<div class="alien">'
-            + '<img src="'+alien.image+' "/>'
-            + '<strong> Name : '+alien.name+'</strong>'
-            + '<strong> Species : '+alien.species+'</strong>'
+              '<div class="alien">'
+            + '<img src="'+alien.image+'"/>'
+            + '<p> <strong>Name :</strong> '+alien.name+'</p>'
+            + '<p> <strong>Species :</strong> '+alien.species+'</p>'
             + '</div>'
         );
         charList.appendChild(addAlien);
